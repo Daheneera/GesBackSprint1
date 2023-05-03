@@ -2,6 +2,7 @@ package es.mdef.gesinalog_sprint1.REST;
 
 import org.slf4j.Logger;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import es.mdef.gesinalog_sprint1.Excepciones.RegisterNotFoundException;
 import es.mdef.gesinalog_sprint1.entidades.Incidencia;
 import es.mdef.gesinalog_sprint1.repositorios.IncidenciaRepositorio;
 
+@CrossOrigin(origins = "https://gesinalog-daheneera.b4a.run:8080")
 @RestController
 @RequestMapping("/incidencias")
 public class IncidenciaController {
