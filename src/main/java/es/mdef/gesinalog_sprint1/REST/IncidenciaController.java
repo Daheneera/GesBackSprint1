@@ -17,7 +17,7 @@ import es.mdef.gesinalog_sprint1.Excepciones.RegisterNotFoundException;
 import es.mdef.gesinalog_sprint1.entidades.Incidencia;
 import es.mdef.gesinalog_sprint1.repositorios.IncidenciaRepositorio;
 
-@CrossOrigin(origins = "https://gesinalog-daheneera.b4a.run:8080")
+@CrossOrigin(origins = "https://gesinalog.netlify.app/:8080")
 @RestController
 @RequestMapping("/incidencias")
 public class IncidenciaController {
