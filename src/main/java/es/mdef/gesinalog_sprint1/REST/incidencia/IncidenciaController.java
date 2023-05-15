@@ -1,4 +1,4 @@
-package es.mdef.gesinalog_sprint1.REST;
+package es.mdef.gesinalog_sprint1.REST.incidencia;
 
 import org.slf4j.Logger;
 import org.springframework.hateoas.CollectionModel;
@@ -37,14 +37,6 @@ public class IncidenciaController {
 			log = GesinalogSprint1Application.log;
 		}
 
-
-
-
-
-
-
-
-
 	@GetMapping("{id}")
 	public IncidenciaModel one(@PathVariable Long id) {
 		Incidencia incidencia = repositorio.findById(id).orElseThrow(
@@ -76,7 +68,6 @@ public class IncidenciaController {
 					inc.setEstadoIncidencia(model.getEstadoIncidencia());
 					inc.setFechaAlta(model.getFechaAlta());
 					inc.setFechaInicio(model.getFechaInicio());
-					inc.setIdInstalacion(model.getIdInstalacion());
 					inc.setTipoIncidencia(model.getTipoIncidencia());
 					inc.setUrgencia(model.getUrgencia());
 					return repositorio.save(inc);

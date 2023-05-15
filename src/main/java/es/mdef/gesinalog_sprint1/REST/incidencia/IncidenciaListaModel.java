@@ -1,19 +1,23 @@
-package es.mdef.gesinalog_sprint1.REST;
+package es.mdef.gesinalog_sprint1.REST.incidencia;
 
 import java.time.LocalDate;
 
+
+
 import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
 import es.mdef.gesinalog_sprint1.entidades.Incidencia.Estado;
 import es.mdef.gesinalog_sprint1.entidades.Incidencia.Prelacion;
 import es.mdef.gesinalog_sprint1.entidades.Incidencia.Tipo;
 
-public class IncidenciaListaModel extends RepresentationModel<IncidenciaModel> {
+
+@Relation(collectionRelation = "incidencias")
+public class IncidenciaListaModel extends RepresentationModel<IncidenciaListaModel> {
 	private String descripcion;
 	private Estado estadoIncidencia;
 	private LocalDate fechaAlta;
 	private LocalDate fechaInicio;
-	private String idInstalacion;
 	private Tipo tipoIncidencia;
 	private Prelacion urgencia;
 	
@@ -41,12 +45,7 @@ public class IncidenciaListaModel extends RepresentationModel<IncidenciaModel> {
 	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public String getIdInstalacion() {
-		return idInstalacion;
-	}
-	public void setIdInstalacion(String idInstalacion) {
-		this.idInstalacion = idInstalacion;
-	}
+	
 	public Tipo getTipoIncidencia() {
 		return tipoIncidencia;
 	}
@@ -61,10 +60,11 @@ public class IncidenciaListaModel extends RepresentationModel<IncidenciaModel> {
 	}
 	@Override
 	public String toString() {
-		return "IncidenciaModel [descripcion=" + descripcion + ", estadoIncidencia=" + estadoIncidencia
-				+ ", fechaAlta=" + fechaAlta + ", fechaInicio=" + fechaInicio + ", idInstalacion="
-				+ idInstalacion + ", tipoIncidencia=" + tipoIncidencia + ", urgencia=" + urgencia + "]";
+		return "IncidenciaListaModel [descripcion=" + descripcion + ", estadoIncidencia=" + estadoIncidencia
+				+ ", fechaAlta=" + fechaAlta + ", fechaInicio=" + fechaInicio + ", tipoIncidencia=" + tipoIncidencia
+				+ ", urgencia=" + urgencia + "]";
 	}
+	
 
 	
 	

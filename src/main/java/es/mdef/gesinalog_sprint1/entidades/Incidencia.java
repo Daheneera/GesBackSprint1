@@ -5,9 +5,12 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -34,9 +37,16 @@ public class Incidencia {
 		private Estado estadoIncidencia;
 		private LocalDate fechaAlta;
 		private LocalDate fechaInicio;
-		private String idInstalacion;
+		
+		@ManyToOne(fetch=FetchType.LAZY)
+		@JoinColumn(name="InstalacionId")
+		private Instalacion instalacion;
 		private Tipo tipoIncidencia;
 		private Prelacion urgencia;
+		
+		
+		
+		
 		public Long getId() {
 			return id;
 		}
@@ -67,11 +77,12 @@ public class Incidencia {
 		public void setFechaInicio(LocalDate fechaInicio) {
 			this.fechaInicio = fechaInicio;
 		}
-		public String getIdInstalacion() {
-			return idInstalacion;
+		
+		public Instalacion getInstalacion() {
+			return instalacion;
 		}
-		public void setIdInstalacion(String idInstalacion) {
-			this.idInstalacion = idInstalacion;
+		public void setInstalacion(Instalacion instalacion) {
+			this.instalacion = instalacion;
 		}
 		public Tipo getTipoIncidencia() {
 			return tipoIncidencia;
@@ -87,10 +98,11 @@ public class Incidencia {
 		}
 		@Override
 		public String toString() {
-			return "Incidencias [id=" + id + ", descripcion=" + descripcion + ", estadoIncidencia=" + estadoIncidencia
-					+ ", fechaAlta=" + fechaAlta + ", fechaInicio=" + fechaInicio + ", idInstalacion=" + idInstalacion
+			return "Incidencia [id=" + id + ", descripcion=" + descripcion + ", estadoIncidencia=" + estadoIncidencia
+					+ ", fechaAlta=" + fechaAlta + ", fechaInicio=" + fechaInicio + ", instalacion=" + instalacion
 					+ ", tipoIncidencia=" + tipoIncidencia + ", urgencia=" + urgencia + "]";
 		}
+		
 		
 		
 		
