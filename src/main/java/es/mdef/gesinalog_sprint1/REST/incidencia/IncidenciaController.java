@@ -59,7 +59,7 @@ public class IncidenciaController {
 		return assembler.toModel(incidencia);
 	}
 
-	@PutMapping
+	@PutMapping("{id}")
 	public IncidenciaModel edit(@PathVariable Long id, @RequestBody IncidenciaModel model) {
 		
 		Incidencia incidencia = repositorio.findById(id).map(
