@@ -5,8 +5,10 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
+import com.luque.librerias.entidades.Incidencia;
+
 import es.mdef.gesinalog_sprint1.REST.instalacion.InstalacionController;
-import es.mdef.gesinalog_sprint1.entidades.Incidencia;
+
 
 
 @Component

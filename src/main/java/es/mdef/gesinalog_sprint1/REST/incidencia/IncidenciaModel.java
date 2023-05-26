@@ -5,10 +5,12 @@ import java.time.LocalDate;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
-import es.mdef.gesinalog_sprint1.entidades.Incidencia.Estado;
-import es.mdef.gesinalog_sprint1.entidades.Incidencia.Prelacion;
-import es.mdef.gesinalog_sprint1.entidades.Incidencia.Tipo;
-import es.mdef.gesinalog_sprint1.entidades.Instalacion;
+import com.luque.librerias.entidades.Incidencia.Estado;
+import com.luque.librerias.entidades.Incidencia.Prelacion;
+import com.luque.librerias.entidades.Incidencia.Tipo;
+import com.luque.librerias.entidades.Instalacion;
+
+
 
 @Relation(itemRelation = "incidencias")
 public class IncidenciaModel extends RepresentationModel<IncidenciaModel> {

@@ -10,9 +10,9 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
+import com.luque.librerias.entidades.Incidencia;
+
 import es.mdef.gesinalog_sprint1.REST.instalacion.InstalacionController;
-import es.mdef.gesinalog_sprint1.entidades.Incidencia;
-import es.mdef.gesinalog_sprint1.entidades.Instalacion;
 
 @Component
 public class IncidenciaListaAssembler implements RepresentationModelAssembler<Incidencia, IncidenciaListaModel> {

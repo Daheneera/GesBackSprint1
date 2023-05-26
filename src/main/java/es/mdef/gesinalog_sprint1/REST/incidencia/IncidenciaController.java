@@ -11,16 +11,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.luque.librerias.entidades.Incidencia;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
 import es.mdef.gesinalog_sprint1.GesinalogSprint1Application;
 import es.mdef.gesinalog_sprint1.Excepciones.RegisterNotFoundException;
-import es.mdef.gesinalog_sprint1.entidades.Incidencia;
 import es.mdef.gesinalog_sprint1.repositorios.IncidenciaRepositorio;
 
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+//@CrossOrigin(origins = "http://localhost:5173", methods= {RequestMethod.PUT, RequestMethod.POST, RequestMethod.GET})
 @RestController
 @RequestMapping("/incidencias")
 public class IncidenciaController {

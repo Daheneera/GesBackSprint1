@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
-import es.mdef.gesinalog_sprint1.entidades.Instalacion.Tipo;
+import com.luque.librerias.entidades.Instalacion.Tipo;
+
+
 
 
 @Relation(collectionRelation = "instalaciones")

@@ -13,8 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name="INCIDENCIAS")
+
 public class Incidencia {
 
 		public static enum Estado{
@@ -29,24 +28,19 @@ public class Incidencia {
 			Urgente, Leve, Rutinaria
 		}
 	
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		@JsonIgnore
+		
 		private Long id;
 		private String descripcion;
 		private Estado estadoIncidencia;
 		private LocalDate fechaAlta;
 		private LocalDate fechaInicio;
-		
-		@ManyToOne(fetch=FetchType.LAZY)
-		@JoinColumn(name="InstalacionId")
 		private Instalacion instalacion;
 		private Tipo tipoIncidencia;
 		private Prelacion urgencia;
 		
 		
 		
-		
+		//Getters & setters
 		public Long getId() {
 			return id;
 		}

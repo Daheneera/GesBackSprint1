@@ -16,27 +16,24 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name="INSTALACIONES")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) 
-@DiscriminatorColumn(name="usoInstalacion", discriminatorType = DiscriminatorType.CHAR)
-@DiscriminatorValue("I")
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+
 public class Instalacion {
 	
 		public enum Tipo {
 			Habitacion, ZonaGeneral
 		}
 		
-		@Id
-		@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 		private Long id;
 		private String nombre;
 		private Boolean a_c;
 		private Tipo tipoInstalacion;
 		private List<String> mobiliario;
-		@OneToMany(mappedBy = "instalacion")
 		List<Incidencia> incidencias;
+		
+		
+		
+		//Getters & setters
 		public Long getId() {
 			return id;
 		}

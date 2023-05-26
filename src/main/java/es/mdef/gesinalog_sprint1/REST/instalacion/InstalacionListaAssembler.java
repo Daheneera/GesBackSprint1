@@ -4,15 +4,15 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
+import com.luque.librerias.entidades.Habitacion;
+import com.luque.librerias.entidades.Instalacion;
+import com.luque.librerias.entidades.ZonaGeneral;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import es.mdef.gesinalog_sprint1.entidades.Habitacion;
-import es.mdef.gesinalog_sprint1.entidades.Instalacion;
-import es.mdef.gesinalog_sprint1.entidades.ZonaGeneral;
 
 
 @Component

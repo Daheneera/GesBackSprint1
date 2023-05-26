@@ -18,17 +18,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.luque.librerias.entidades.Habitacion;
+import com.luque.librerias.entidades.Incidencia;
+import com.luque.librerias.entidades.Instalacion;
+import com.luque.librerias.entidades.Instalacion.Tipo;
+import com.luque.librerias.entidades.ZonaGeneral;
+
 import es.mdef.gesinalog_sprint1.GesinalogSprint1Application;
 import es.mdef.gesinalog_sprint1.Excepciones.RegisterNotFoundException;
 import es.mdef.gesinalog_sprint1.REST.incidencia.IncidenciaAssembler;
 import es.mdef.gesinalog_sprint1.REST.incidencia.IncidenciaListaAssembler;
 import es.mdef.gesinalog_sprint1.REST.incidencia.IncidenciaListaModel;
 import es.mdef.gesinalog_sprint1.REST.incidencia.IncidenciaModel;
-import es.mdef.gesinalog_sprint1.entidades.Habitacion;
-import es.mdef.gesinalog_sprint1.entidades.Incidencia;
-import es.mdef.gesinalog_sprint1.entidades.Instalacion;
-import es.mdef.gesinalog_sprint1.entidades.Instalacion.Tipo;
-import es.mdef.gesinalog_sprint1.entidades.ZonaGeneral;
 import es.mdef.gesinalog_sprint1.repositorios.InstalacionRepositorio;
 
 @CrossOrigin(origins = "*")

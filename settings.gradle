@@ -1,1 +1,3 @@
 rootProject.name = 'gesinalog_sprint1'
+includeFlat('libreriasDIM')
+
