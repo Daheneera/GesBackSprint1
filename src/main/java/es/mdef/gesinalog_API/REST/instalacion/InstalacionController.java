@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -136,4 +137,10 @@ public class InstalacionController {
 		}else return assembler.toModel(instalacion);
 	}
 	
+	@DeleteMapping("{id}")
+	public void delete(@PathVariable Long id) {
+		log.info("Borrada instalacion " + id);
+		repositorio.deleteById(id);
+	}
+
 }
