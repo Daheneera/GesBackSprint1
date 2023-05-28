@@ -3,13 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd" 
 	version="1.0"> 
-    <entity class="es.mdef.gesinalog_API.entidades.Habitacion" access="FIELD">
-    	<discriminator-value>H</discriminator-value>
+	
+	<mapped-superclass class="com.luque.librerias.utilidades.InstalacionImpl" access="FIELD">
+    
         <attributes> 
-            <basic name="telefono"/>  
-             <basic name="tv"/>    
-              <basic name="numCamas"/>  
+            <id name="id" >
+            	<generated-value strategy="IDENTITY"/>
+            </id>
                   
+            <one-to-many name="incidencias" mapped-by="instalacion" target-entity="es.mdef.gesinalog_API.entidades.IncidenciaConId"></one-to-many>
         </attributes>
-     </entity>
+   
+	</mapped-superclass>
 </entity-mappings>

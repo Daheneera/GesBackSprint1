@@ -1,4 +1,4 @@
-package es.mdef.gesinalog_sprint1.Excepciones;
+package es.mdef.gesinalog_API.Excepciones;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

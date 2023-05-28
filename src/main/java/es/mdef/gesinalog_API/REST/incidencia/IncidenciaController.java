@@ -1,4 +1,4 @@
-package es.mdef.gesinalog_sprint1.REST.incidencia;
+package es.mdef.gesinalog_API.REST.incidencia;
 
 import org.slf4j.Logger;
 import org.springframework.hateoas.CollectionModel;
@@ -12,15 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.luque.librerias.entidades.Incidencia;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-import es.mdef.gesinalog_sprint1.GesinalogSprint1Application;
-import es.mdef.gesinalog_sprint1.Excepciones.RegisterNotFoundException;
-import es.mdef.gesinalog_sprint1.repositorios.IncidenciaRepositorio;
+import es.mdef.gesinalog_API.GesinalogSprint1Application;
+import es.mdef.gesinalog_API.Excepciones.RegisterNotFoundException;
+import es.mdef.gesinalog_API.entidades.IncidenciaConId;
+import es.mdef.gesinalog_API.repositorios.IncidenciaRepositorio;
 
 //@CrossOrigin(origins = "http://localhost:5173", methods= {RequestMethod.PUT, RequestMethod.POST, RequestMethod.GET})
 @RestController
@@ -44,7 +43,7 @@ public class IncidenciaController {
 
 	@GetMapping("{id}")
 	public IncidenciaModel one(@PathVariable Long id) {
-		Incidencia incidencia = repositorio.findById(id).orElseThrow(
+		IncidenciaConId incidencia = repositorio.findById(id).orElseThrow(
 				()-> new RegisterNotFoundException(id, "incidencia"));
 		log.info("Recuperada " + incidencia);
 		return assembler.toModel(incidencia);
@@ -59,7 +58,7 @@ public class IncidenciaController {
 	
 	@PostMapping
 	public IncidenciaModel add(@RequestBody IncidenciaModel model) {
-		Incidencia incidencia = repositorio.save(assembler.toEntity(model));
+		IncidenciaConId incidencia = repositorio.save(assembler.toEntity(model));
 		log.info("Añadida " + incidencia);
 		return assembler.toModel(incidencia);
 	}
@@ -67,7 +66,7 @@ public class IncidenciaController {
 	@PutMapping("{id}")
 	public IncidenciaModel edit(@PathVariable Long id, @RequestBody IncidenciaModel model) {
 		
-		Incidencia incidencia = repositorio.findById(id).map(
+		IncidenciaConId incidencia = repositorio.findById(id).map(
 				inc ->{
 					inc.setDescripcion(model.getDescripcion());
 					inc.setEstadoIncidencia(model.getEstadoIncidencia());

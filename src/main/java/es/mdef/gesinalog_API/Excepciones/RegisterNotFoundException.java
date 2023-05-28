@@ -1,4 +1,4 @@
-package es.mdef.gesinalog_sprint1.Excepciones;
+package es.mdef.gesinalog_API.Excepciones;
 
 public class RegisterNotFoundException extends RuntimeException {
 

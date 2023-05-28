@@ -1,0 +1,15 @@
+package es.mdef.gesinalog_API.repositorios;
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import es.mdef.gesinalog_API.entidades.InstalacionConId;
+
+
+
+
+
+
+public interface InstalacionRepositorio extends JpaRepository<InstalacionConId, Long> {
+
+}

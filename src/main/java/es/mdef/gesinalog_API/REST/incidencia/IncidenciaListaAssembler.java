@@ -1,4 +1,4 @@
-package es.mdef.gesinalog_sprint1.REST.incidencia;
+package es.mdef.gesinalog_API.REST.incidencia;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -10,15 +10,17 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
-import com.luque.librerias.entidades.Incidencia;
+import com.luque.librerias.utilidades.Incidencia;
 
-import es.mdef.gesinalog_sprint1.REST.instalacion.InstalacionController;
+import es.mdef.gesinalog_API.REST.instalacion.InstalacionController;
+import es.mdef.gesinalog_API.entidades.IncidenciaConId;
+import es.mdef.gesinalog_API.entidades.InstalacionConId;
 
 @Component
-public class IncidenciaListaAssembler implements RepresentationModelAssembler<Incidencia, IncidenciaListaModel> {
+public class IncidenciaListaAssembler<T extends Incidencia> implements RepresentationModelAssembler<T, IncidenciaListaModel> {
 
 	@Override
-	public IncidenciaListaModel toModel(Incidencia entity) {
+	public IncidenciaListaModel toModel(T entity) {
 		
 		IncidenciaListaModel model = new IncidenciaListaModel();
 		model.setDescripcion(entity.getDescripcion());
@@ -28,14 +30,14 @@ public class IncidenciaListaAssembler implements RepresentationModelAssembler<In
 		model.setTipoIncidencia(entity.getTipoIncidencia());
 		model.setUrgencia(entity.getUrgencia());
 		model.add(
-				linkTo(methodOn(IncidenciaController.class).one(entity.getId())).withSelfRel(),
-				linkTo(methodOn(InstalacionController.class).one(entity.getInstalacion().getId())).withRel("instalacion")
+				linkTo(methodOn(IncidenciaController.class).one(((IncidenciaConId)entity).getId())).withSelfRel(),
+				linkTo(methodOn(InstalacionController.class).one(((InstalacionConId)entity.getInstalacion()).getId())).withRel("instalacion")
 				);
 		return model;
 	}
 
 	
-	public CollectionModel<IncidenciaListaModel> toCollection(List<Incidencia> lista){
+	public CollectionModel<IncidenciaListaModel> toCollection(List<T> lista){
 		CollectionModel<IncidenciaListaModel> collection = CollectionModel.of(lista.stream().map(this::toModel).
 				collect(Collectors.toList()));
 				collection.add(

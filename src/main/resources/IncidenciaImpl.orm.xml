@@ -3,12 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd" 
 	version="1.0"> 
-    <entity class="com.luque.librerias.entidades.Incidencia" access="FIELD">
-    	<table name="INCIDENCIAS" />
+	
+	
+	<mapped-superclass class="com.luque.librerias.utilidades.IncidenciaImpl">
+    
         <attributes> 
-            <id name="id" >
-            	<generated-value strategy="IDENTITY"/>
-            </id>
+           
             <basic name="descripcion" optional="false" />
             <basic name="estadoIncidencia" optional="false">
            			<enumerated>ORDINAL</enumerated>
@@ -25,5 +25,5 @@
 				<join-column name="instalacionId"/>
 			</many-to-one>
         </attributes>
-     </entity>
+    </mapped-superclass>
 </entity-mappings>

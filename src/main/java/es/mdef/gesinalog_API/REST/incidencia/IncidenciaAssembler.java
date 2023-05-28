@@ -1,21 +1,20 @@
-package es.mdef.gesinalog_sprint1.REST.incidencia;
+package es.mdef.gesinalog_API.REST.incidencia;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
-import com.luque.librerias.entidades.Incidencia;
-
-import es.mdef.gesinalog_sprint1.REST.instalacion.InstalacionController;
+import es.mdef.gesinalog_API.REST.instalacion.InstalacionController;
+import es.mdef.gesinalog_API.entidades.IncidenciaConId;
 
 
 
 @Component
-public class IncidenciaAssembler implements RepresentationModelAssembler<Incidencia, IncidenciaModel> {
+public class IncidenciaAssembler implements RepresentationModelAssembler<IncidenciaConId, IncidenciaModel> {
 
 	@Override
-	public IncidenciaModel toModel(Incidencia entity) {
+	public IncidenciaModel toModel(IncidenciaConId entity) {
 		IncidenciaModel model = new IncidenciaModel();
 		model.setDescripcion(entity.getDescripcion());
 		model.setEstadoIncidencia(entity.getEstadoIncidencia());
@@ -33,8 +32,8 @@ public class IncidenciaAssembler implements RepresentationModelAssembler<Inciden
 		return model;
 	}
 	
-	public Incidencia toEntity(IncidenciaModel model) {
-		Incidencia incidencia = new Incidencia();
+	public IncidenciaConId toEntity(IncidenciaModel model) {
+		IncidenciaConId incidencia = new IncidenciaConId();
 	incidencia.setDescripcion(model.getDescripcion());
 	incidencia.setEstadoIncidencia(model.getEstadoIncidencia());
 	incidencia.setFechaAlta(model.getFechaAlta());

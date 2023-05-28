@@ -1,24 +1,30 @@
-package es.mdef.gesinalog_sprint1.REST.instalacion;
+package es.mdef.gesinalog_API.REST.instalacion;
+
+
 
 import java.util.List;
 
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
-import com.luque.librerias.entidades.Instalacion.Tipo;
+import com.luque.librerias.utilidades.InstalacionImpl.Tipo;
 
 
 
 
-@Relation(collectionRelation = "instalaciones")
-public class InstalacionListaModel extends RepresentationModel<InstalacionListaModel> {
 
-	
 
-	
+
+
+
+@Relation(itemRelation = "instalacion")
+public class InstalacionModel extends RepresentationModel<InstalacionModel> {
+
+
+		
 	private String nombre;
 	private Boolean a_c;
-	private Tipo tipoInstalación;
+	private Tipo tipoInstalacion;
 	private List<String> mobiliario;
 	private Boolean telefono;
 	private Boolean tv;
@@ -37,11 +43,11 @@ public class InstalacionListaModel extends RepresentationModel<InstalacionListaM
 	public void setA_c(Boolean a_c) {
 		this.a_c = a_c;
 	}
-	public Tipo getTipoInstalación() {
-		return tipoInstalación;
+	public Tipo getTipoInstalacion() {
+		return tipoInstalacion;
 	}
-	public void setTipoInstalación(Tipo tipoInstalación) {
-		this.tipoInstalación = tipoInstalación;
+	public void setTipoInstalacion(Tipo tipoInstalación) {
+		this.tipoInstalacion = tipoInstalación;
 	}
 	public List<String> getMobiliario() {
 		return mobiliario;
@@ -75,12 +81,10 @@ public class InstalacionListaModel extends RepresentationModel<InstalacionListaM
 	}
 	@Override
 	public String toString() {
-		return "InstalacionModel [nombre=" + nombre + ", a_c=" + a_c + ", tipoInstalación=" + tipoInstalación
+		return "InstalacionModel [nombre=" + nombre + ", a_c=" + a_c + ", tipoInstalación=" + tipoInstalacion
 				+ ", mobiliario=" + mobiliario + ", telefono=" + telefono + ", tv=" + tv + ", numCamas=" + numCamas
 				+ ", aforo=" + aforo + "]";
 	}
-	
-	
 	
 	
 }

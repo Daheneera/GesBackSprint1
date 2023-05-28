@@ -1,14 +1,17 @@
-package es.mdef.gesinalog_sprint1.REST.incidencia;
+package es.mdef.gesinalog_API.REST.incidencia;
 
 import java.time.LocalDate;
 
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
-import com.luque.librerias.entidades.Incidencia.Estado;
-import com.luque.librerias.entidades.Incidencia.Prelacion;
-import com.luque.librerias.entidades.Incidencia.Tipo;
-import com.luque.librerias.entidades.Instalacion;
+import com.luque.librerias.utilidades.IncidenciaImpl.Estado;
+import com.luque.librerias.utilidades.IncidenciaImpl.Prelacion;
+import com.luque.librerias.utilidades.IncidenciaImpl.Tipo;
+
+import es.mdef.gesinalog_API.entidades.InstalacionConId;
+
+
 
 
 
@@ -21,7 +24,7 @@ public class IncidenciaModel extends RepresentationModel<IncidenciaModel> {
 			private LocalDate fechaInicio;
 			private Tipo tipoIncidencia;
 			private Prelacion urgencia;
-			private Instalacion instalacion;
+			private InstalacionConId instalacion;
 			
 			public String getDescripcion() {
 				return descripcion;
@@ -63,10 +66,10 @@ public class IncidenciaModel extends RepresentationModel<IncidenciaModel> {
 			
 			
 			
-			public Instalacion getInstalacion() {
+			public InstalacionConId getInstalacion() {
 				return instalacion;
 			}
-			public void setInstalacion(Instalacion instalacion) {
+			public void setInstalacion(InstalacionConId instalacion) {
 				this.instalacion = instalacion;
 			}
 			@Override

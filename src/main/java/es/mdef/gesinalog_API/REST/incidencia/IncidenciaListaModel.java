@@ -1,4 +1,4 @@
-package es.mdef.gesinalog_sprint1.REST.incidencia;
+package es.mdef.gesinalog_API.REST.incidencia;
 
 import java.time.LocalDate;
 
@@ -7,9 +7,13 @@ import java.time.LocalDate;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
-import com.luque.librerias.entidades.Incidencia.Estado;
-import com.luque.librerias.entidades.Incidencia.Prelacion;
-import com.luque.librerias.entidades.Incidencia.Tipo;
+import com.luque.librerias.utilidades.IncidenciaImpl.Estado;
+import com.luque.librerias.utilidades.IncidenciaImpl.Prelacion;
+import com.luque.librerias.utilidades.IncidenciaImpl.Tipo;
+
+
+
+
 
 
 

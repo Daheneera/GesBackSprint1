@@ -1,4 +1,4 @@
-package es.mdef.gesinalog_sprint1.configurations;
+package es.mdef.gesinalog_API.configurations;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;

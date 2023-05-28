@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd" 
 	version="1.0"> 
-    <entity class="com.luque.librerias.entidades.Instalacion" access="FIELD">
+    <entity class="es.mdef.gesinalog_API.entidades.InstalacionConId" access="FIELD">
     	<table name="INSTALACIONES" />
     	<inheritance strategy="SINGLE_TABLE"/>
     	<discriminator-value>I</discriminator-value>
@@ -12,18 +12,8 @@
             <id name="id" >
             	<generated-value strategy="IDENTITY"/>
             </id>
-            <basic name="nombre" optional="false" >
-            	<column name="nombre" unique="false"/>
-            </basic>
-            <basic name="A_C" optional="true" >
-            	<column name="A_C" unique="false"/>
-            </basic>
-            <basic name="tipoInstalacion" optional="true">
-				<enumerated>ORDINAL</enumerated>
-            </basic>
-            <basic name="mobiliario" optional="true">
-            </basic>          
-            <one-to-many name="incidencias" mapped-by="instalacion"></one-to-many>
+                  
+           <!-- <one-to-many name="incidencias" mapped-by="instalacion"></one-to-many>-->
         </attributes>
      </entity>
 </entity-mappings>

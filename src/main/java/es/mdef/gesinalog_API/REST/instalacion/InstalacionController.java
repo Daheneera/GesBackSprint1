@@ -1,4 +1,4 @@
-package es.mdef.gesinalog_sprint1.REST.instalacion;
+package es.mdef.gesinalog_API.REST.instalacion;
 
 
 import java.util.List;
@@ -18,19 +18,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.luque.librerias.entidades.Habitacion;
-import com.luque.librerias.entidades.Incidencia;
-import com.luque.librerias.entidades.Instalacion;
-import com.luque.librerias.entidades.Instalacion.Tipo;
-import com.luque.librerias.entidades.ZonaGeneral;
+import com.luque.librerias.utilidades.InstalacionImpl.Tipo;
 
-import es.mdef.gesinalog_sprint1.GesinalogSprint1Application;
-import es.mdef.gesinalog_sprint1.Excepciones.RegisterNotFoundException;
-import es.mdef.gesinalog_sprint1.REST.incidencia.IncidenciaAssembler;
-import es.mdef.gesinalog_sprint1.REST.incidencia.IncidenciaListaAssembler;
-import es.mdef.gesinalog_sprint1.REST.incidencia.IncidenciaListaModel;
-import es.mdef.gesinalog_sprint1.REST.incidencia.IncidenciaModel;
-import es.mdef.gesinalog_sprint1.repositorios.InstalacionRepositorio;
+import es.mdef.gesinalog_API.GesinalogSprint1Application;
+import es.mdef.gesinalog_API.Excepciones.RegisterNotFoundException;
+import es.mdef.gesinalog_API.REST.incidencia.IncidenciaAssembler;
+import es.mdef.gesinalog_API.REST.incidencia.IncidenciaListaAssembler;
+import es.mdef.gesinalog_API.REST.incidencia.IncidenciaListaModel;
+import es.mdef.gesinalog_API.REST.incidencia.IncidenciaModel;
+import es.mdef.gesinalog_API.entidades.Habitacion;
+import es.mdef.gesinalog_API.entidades.IncidenciaConId;
+import es.mdef.gesinalog_API.entidades.InstalacionConId;
+import es.mdef.gesinalog_API.entidades.ZonaGeneral;
+import es.mdef.gesinalog_API.repositorios.InstalacionRepositorio;
+
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -56,7 +57,7 @@ public class InstalacionController {
 
 	@GetMapping("{id}")
 	public InstalacionModel one(@PathVariable Long id) {
-		Instalacion instalacion = repositorio.findById(id)
+		InstalacionConId instalacion = repositorio.findById(id)
 				.orElseThrow(() -> new RegisterNotFoundException(id, "instalacion"));
 		log.info("Recuperada " + instalacion);
 		return assembler.toModel(instalacion);
@@ -70,21 +71,19 @@ public class InstalacionController {
 	
 	@GetMapping("{id}/incidencias")
 	public CollectionModel<IncidenciaListaModel> incidencias(@PathVariable Long id) {
-		List<Incidencia> incidencia = repositorio.findById(id)
-				.orElseThrow(() -> new RegisterNotFoundException(id, "instalacion"))
-				.getIncidencias();
-				Link link = linkTo(methodOn(InstalacionController.class).one(id)).withSelfRel();
+		InstalacionConId instalacion = repositorio.findById(id)
+				.orElseThrow(() -> new RegisterNotFoundException(id, "instalacion"));
+		
+		Link link = linkTo(methodOn(InstalacionController.class).one(id)).withSelfRel();
 					link = Link.of(link.getHref() + "/incidencias", "incidencias");
 				
-	    return CollectionModel.of(
-	            incidencia.stream().map(p -> incidenciaListaAssembler.toModel(p)).collect(Collectors.toList())
-	            ,link);
+	    return incidenciaListaAssembler.toCollection(instalacion.getIncidencias());
 	}
 	
 	@PostMapping
 	public InstalacionModel add(@RequestBody InstalacionModel model) {
 		
-		Instalacion instalacion;
+		InstalacionConId instalacion;
 		
 		switch(model.getTipoInstalacion()) {
 		case Habitacion:
@@ -106,13 +105,13 @@ public class InstalacionController {
 			
 		
 		default: 
-			instalacion= new Instalacion();
+			instalacion= new InstalacionConId();
 			return assembler.toModel(instalacion);
 		}
 	}
 	@PutMapping("{id}")
 	public InstalacionModel edit( @PathVariable Long id, @RequestBody InstalacionModel model) {
-		Instalacion instalacion = repositorio.findById(id).map(i -> {
+		InstalacionConId instalacion = repositorio.findById(id).map(i -> {
 			i.setNombre(model.getNombre());
 			i.setA_c(model.getA_c());
 			i.setMobiliario(model.getMobiliario());

@@ -1,10 +1,10 @@
-package es.mdef.gesinalog_sprint1.REST.instalacion;
+package es.mdef.gesinalog_API.REST.instalacion;
 
 import org.springframework.stereotype.Component;
 
-import com.luque.librerias.entidades.Habitacion;
-import com.luque.librerias.entidades.Instalacion;
-import com.luque.librerias.entidades.ZonaGeneral;
+import es.mdef.gesinalog_API.entidades.Habitacion;
+import es.mdef.gesinalog_API.entidades.InstalacionConId;
+import es.mdef.gesinalog_API.entidades.ZonaGeneral;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -12,10 +12,10 @@ import org.springframework.hateoas.server.RepresentationModelAssembler;
 
 
 @Component
-public class InstalacionAssembler implements RepresentationModelAssembler<Instalacion, InstalacionModel> {
+public class InstalacionAssembler implements RepresentationModelAssembler<InstalacionConId, InstalacionModel> {
 
 	@Override
-	public InstalacionModel toModel(Instalacion entity) {
+	public InstalacionModel toModel(InstalacionConId entity) {
 		InstalacionModel model = new InstalacionModel();
 		model.setA_c(entity.getA_c());
 		model.setNombre(entity.getNombre());
@@ -54,8 +54,8 @@ public class InstalacionAssembler implements RepresentationModelAssembler<Instal
 		return model;
 	}
 	
-	public Instalacion toEntity(InstalacionModel model) {
-		Instalacion instalacion;
+	public InstalacionConId toEntity(InstalacionModel model) {
+		InstalacionConId instalacion;
 		
 		switch(model.getTipoInstalacion()) {
 		case Habitacion:
@@ -71,7 +71,7 @@ public class InstalacionAssembler implements RepresentationModelAssembler<Instal
 					instalacion=zona;
 					break;
 		default: 
-					instalacion = new Instalacion();
+					instalacion = new InstalacionConId();
 		}
 		instalacion.setNombre(model.getNombre());
 		instalacion.setA_c(model.getA_c());
