@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import es.mdef.gesinalog_API.REST.instalacion.InstalacionController;
 import es.mdef.gesinalog_API.entidades.IncidenciaConId;
+import es.mdef.gesinalog_API.entidades.InstalacionConId;
 
 
 
@@ -24,7 +25,7 @@ public class IncidenciaAssembler implements RepresentationModelAssembler<Inciden
 		model.setUrgencia(entity.getUrgencia());
 		model.add(
 				linkTo(methodOn(IncidenciaController.class).one(entity.getId())).withSelfRel(),
-				linkTo(methodOn(InstalacionController.class).one(entity.getInstalacion().getId())).withRel("Instalacion")
+				linkTo(methodOn(InstalacionController.class).one(((InstalacionConId)entity.getInstalacion()).getId())).withRel("Instalacion")
 				);
 		
 		

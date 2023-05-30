@@ -64,8 +64,6 @@ public class IncidenciaModel extends RepresentationModel<IncidenciaModel> {
 				this.urgencia = urgencia;
 			}
 			
-			
-			
 			public InstalacionConId getInstalacion() {
 				return instalacion;
 			}

@@ -7,11 +7,16 @@
 	<mapped-superclass class="com.luque.librerias.utilidades.InstalacionImpl" access="FIELD">
     
         <attributes> 
-            <id name="id" >
+			  <id name="id" >
             	<generated-value strategy="IDENTITY"/>
             </id>
-                  
-            <one-to-many name="incidencias" mapped-by="instalacion" target-entity="es.mdef.gesinalog_API.entidades.IncidenciaConId"></one-to-many>
+            <basic name="nombre"/>
+            <basic name="a_c"/>
+            <basic name="tipoInstalacion"/>
+            <basic name="mobiliario"/>                    
+            
+			<one-to-many name="incidencias" mapped-by="instalacion" target-entity="es.mdef.gesinalog_API.entidades.IncidenciaConId"></one-to-many>
+		
         </attributes>
    
 	</mapped-superclass>

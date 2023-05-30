@@ -74,6 +74,7 @@ public class IncidenciaController {
 					inc.setFechaInicio(model.getFechaInicio());
 					inc.setTipoIncidencia(model.getTipoIncidencia());
 					inc.setUrgencia(model.getUrgencia());
+					inc.setInstalacion(model.getInstalacion());
 					return repositorio.save(inc);
 				}).orElseThrow(()-> new RegisterNotFoundException(id, "incidencia"));
 		log.info("Actualizada "+ incidencia);
