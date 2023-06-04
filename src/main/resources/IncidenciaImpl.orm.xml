@@ -24,6 +24,7 @@
 			<many-to-one name="instalacion" fetch="LAZY" optional="false">
 				<join-column name="instalacionId"/>
 			</many-to-one>
+			
         </attributes>
     </mapped-superclass>
 </entity-mappings>

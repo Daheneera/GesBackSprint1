@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd" 
+	version="1.0"> 
+    <entity class="es.mdef.gesinalog_API.entidades.Usuario" access="FIELD">
+    	<table name="USUARIOS" />
+        <attributes> 
+			<id name="id" >
+            	<generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="nombre"/>  
+             <basic name="username"/>    
+              <basic name="password"/>  
+              <basic name="tipoUser" optional="false">
+				 	<enumerated>ORDINAL</enumerated>
+			 </basic>
+			 <one-to-many name="valoraciones" mapped-by="usuario" target-entity="es.mdef.gesinalog_API.entidades.Valoracion"></one-to-many>
+                  
+        </attributes>
+     </entity>
+</entity-mappings>

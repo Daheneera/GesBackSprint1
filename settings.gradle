@@ -1,3 +1,3 @@
-rootProject.name = 'gesinalog_sprint1'
+rootProject.name = 'gesinalog_API'
 includeFlat('librerias')
 

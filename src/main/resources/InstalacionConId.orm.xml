@@ -13,7 +13,7 @@
             	<generated-value strategy="IDENTITY"/>
             </id>
                   
-        
+       <!-- <one-to-many name="incidencias" mapped-by="instalacion" target-entity="es.mdef.gesinalog_API.entidades.IncidenciaConId"></one-to-many>-->
         </attributes>
      </entity>
 </entity-mappings>

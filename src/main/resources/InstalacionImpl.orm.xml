@@ -15,7 +15,7 @@
             <basic name="tipoInstalacion"/>
             <basic name="mobiliario"/>                    
             
-			<one-to-many name="incidencias" mapped-by="instalacion" target-entity="es.mdef.gesinalog_API.entidades.IncidenciaConId"></one-to-many>
+		<one-to-many name="incidencias" mapped-by="instalacion" target-entity="es.mdef.gesinalog_API.entidades.IncidenciaConId"></one-to-many>
 		
         </attributes>
    
