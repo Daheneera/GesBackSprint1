@@ -9,7 +9,7 @@
             <id name="id" >
             	<generated-value strategy="IDENTITY"/>
             </id>
-            <basic name="descripcion" optional="false" />
+            <basic name="descripcion" optional="true" />
             <basic name="estadoIncidencia" optional="false">
            			<enumerated>ORDINAL</enumerated>
            	</basic>
@@ -21,7 +21,7 @@
              <basic name="urgencia" optional="false">
 				 	<enumerated>ORDINAL</enumerated>
 			 </basic>
-			<many-to-one name="instalacion" fetch="LAZY" optional="false">
+			<many-to-one name="instalacion" fetch="LAZY" optional="false" target-entity="es.mdef.gesinalog_API.entidades.InstalacionConId">
 				<join-column name="instalacionId"/>
 			</many-to-one>
 			 <one-to-many name="valoraciones" mapped-by="incidencia" target-entity="es.mdef.gesinalog_API.entidades.Valoracion"></one-to-many>

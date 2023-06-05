@@ -21,9 +21,7 @@
              <basic name="urgencia" optional="false">
 				 	<enumerated>ORDINAL</enumerated>
 			 </basic>
-			<many-to-one name="instalacion" fetch="LAZY" optional="false">
-				<join-column name="instalacionId"/>
-			</many-to-one>
+			
 			
         </attributes>
     </mapped-superclass>
