@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import es.mdef.gesinalog_API.GesinalogSprint1Application;
+import es.mdef.gesinalog_API.GesinalogAPIApplication;
 import es.mdef.gesinalog_API.Excepciones.RegisterNotFoundException;
 import es.mdef.gesinalog_API.entidades.IncidenciaConId;
 import es.mdef.gesinalog_API.repositorios.IncidenciaRepositorio;
@@ -38,7 +38,7 @@ public class IncidenciaController {
 			this.repositorio = repositorio;
 			this.assembler = assembler;
 			this.listaAssembler = listaAssembler;
-			log = GesinalogSprint1Application.log;
+			log = GesinalogAPIApplication.log;
 		}
 
 	@GetMapping("{id}")

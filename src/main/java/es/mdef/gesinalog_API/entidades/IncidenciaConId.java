@@ -76,13 +76,14 @@ public class IncidenciaConId extends IncidenciaImpl{
 	public void setValoraciones(List<Valoracion> valoraciones) {
 		this.valoraciones = valoraciones;
 	}
-	@Override
-	public String toString() {
-		return "IncidenciaConId [id=" + id + ", descripcion=" + descripcion + ", estadoIncidencia=" + estadoIncidencia
-				+ ", fechaAlta=" + fechaAlta + ", fechaInicio=" + fechaInicio + ", instalacion=" + instalacion
-				+ ", tipoIncidencia=" + tipoIncidencia + ", urgencia=" + urgencia + ", valoraciones=" + valoraciones
-				+ "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "IncidenciaConId [id=" + id + ", descripcion=" + descripcion + ", estadoIncidencia=" + estadoIncidencia
+//				+ ", fechaAlta=" + fechaAlta + ", fechaInicio=" + fechaInicio + ", instalacion=" + instalacion
+//				+ ", tipoIncidencia=" + tipoIncidencia + ", urgencia=" + urgencia + ", valoraciones=" + valoraciones
+//				+ "]";
+//	}
+	
 
 
 

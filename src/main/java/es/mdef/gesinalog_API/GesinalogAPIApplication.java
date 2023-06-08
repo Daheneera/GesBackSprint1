@@ -8,12 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class GesinalogSprint1Application {
+public class GesinalogAPIApplication {
 
-	public static final Logger log = LoggerFactory.getLogger(GesinalogSprint1Application.class);
+	public static final Logger log = LoggerFactory.getLogger(GesinalogAPIApplication.class);
 	
 	public static void main(String[] args) {
-		SpringApplication.run(GesinalogSprint1Application.class, args);
+		SpringApplication.run(GesinalogAPIApplication.class, args);
 	}
 	
 	

@@ -26,6 +26,7 @@ public class IncidenciaAssembler implements RepresentationModelAssembler<Inciden
 		model.add(
 				linkTo(methodOn(IncidenciaController.class).one(entity.getId())).withSelfRel(),
 				linkTo(methodOn(InstalacionController.class).one(((InstalacionConId)entity.getInstalacion()).getId())).withRel("Instalacion")
+			
 				);
 		
 		

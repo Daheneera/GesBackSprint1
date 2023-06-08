@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -66,8 +65,9 @@ public class Usuario {
 		@Override
 		public String toString() {
 			return "Usuario [id=" + id + ", nombre=" + nombre + ", username=" + username + ", password=" + password
-					+ ", tipoUser=" + tipoUser + ", valoraciones=" + valoraciones + "]";
+					+ ", tipoUser=" + tipoUser +  "]";
 		}
+		
 		
 		
 }

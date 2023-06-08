@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.luque.librerias.utilidades.InstalacionImpl.Tipo;
 
-import es.mdef.gesinalog_API.GesinalogSprint1Application;
+import es.mdef.gesinalog_API.GesinalogAPIApplication;
 import es.mdef.gesinalog_API.Excepciones.RegisterNotFoundException;
 import es.mdef.gesinalog_API.REST.incidencia.IncidenciaAssembler;
 import es.mdef.gesinalog_API.REST.incidencia.IncidenciaListaAssembler;
@@ -53,7 +53,7 @@ public class InstalacionController {
 		this.assembler = assembler;
 		this.listaAssembler = listaAssembler;
 		this.incidenciaListaAssembler= incidenciaListaAssembler;
-		this.log = GesinalogSprint1Application.log;
+		this.log = GesinalogAPIApplication.log;
 	}
 
 	@GetMapping("{id}")

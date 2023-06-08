@@ -9,16 +9,10 @@ import es.mdef.gesinalog_API.entidades.Usuario;
 
 @Relation(itemRelation = "valoracion")
 public class ValoracionModel extends RepresentationModel<ValoracionModel> {
-	private Long id;
 	private Integer puntuacion;
 	private IncidenciaConId incidencia;
 	private Usuario usuario;
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 	public Integer getPuntuacion() {
 		return puntuacion;
 	}
@@ -39,9 +33,10 @@ public class ValoracionModel extends RepresentationModel<ValoracionModel> {
 	}
 	@Override
 	public String toString() {
-		return "Valoracion [id=" + id + ", puntuacion=" + puntuacion + ", incidencia=" + incidencia + ", usuario="
-				+ usuario + "]";
+		return "ValoracionModel [puntuacion=" + puntuacion + ", incidencia=" + incidencia + ", usuario=" + usuario
+				+ "]";
 	}
+	
 	
 	
 }
