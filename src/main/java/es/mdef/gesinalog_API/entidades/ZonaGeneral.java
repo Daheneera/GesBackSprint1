@@ -2,9 +2,11 @@ package es.mdef.gesinalog_API.entidades;
 
 import java.util.List;
 
+import com.luque.librerias.utilidades.sinHuesped;
 
 
-public class ZonaGeneral extends InstalacionConId {
+
+public class ZonaGeneral extends InstalacionConId implements sinHuesped{
 	
 	private Integer aforo;
 

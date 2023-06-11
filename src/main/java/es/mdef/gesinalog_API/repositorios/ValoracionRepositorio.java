@@ -8,4 +8,7 @@ import es.mdef.gesinalog_API.entidades.Valoracion;
 
 public interface ValoracionRepositorio extends JpaRepository<Valoracion, Long> {
 
+	
+	
+	
 }

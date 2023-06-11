@@ -2,9 +2,11 @@ package es.mdef.gesinalog_API.entidades;
 
 import java.util.List;
 
+import com.luque.librerias.utilidades.conHuesped;
 
 
-public class Habitacion extends InstalacionConId {
+
+public class Habitacion extends InstalacionConId implements conHuesped{
 	
 	private Boolean telefono;
 	private Boolean tv;

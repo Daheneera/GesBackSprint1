@@ -1,7 +1,11 @@
 package es.mdef.gesinalog_API.REST.incidencia;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import org.slf4j.Logger;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.Link;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import es.mdef.gesinalog_API.GesinalogAPIApplication;
 import es.mdef.gesinalog_API.Excepciones.RegisterNotFoundException;
+import es.mdef.gesinalog_API.REST.instalacion.InstalacionController;
+import es.mdef.gesinalog_API.REST.valoracion.ValoracionListaAssembler;
+import es.mdef.gesinalog_API.REST.valoracion.ValoracionListaModel;
 import es.mdef.gesinalog_API.entidades.IncidenciaConId;
+import es.mdef.gesinalog_API.entidades.InstalacionConId;
 import es.mdef.gesinalog_API.repositorios.IncidenciaRepositorio;
 
 //@CrossOrigin(origins = "http://localhost:5173", methods= {RequestMethod.PUT, RequestMethod.POST, RequestMethod.GET})
@@ -29,15 +37,17 @@ public class IncidenciaController {
 		private final IncidenciaRepositorio repositorio;
 		private final IncidenciaAssembler assembler;
 		private final IncidenciaListaAssembler listaAssembler;
+		private final ValoracionListaAssembler valoracionListaAssembler;
 		private final Logger log;
 
 	
 	public IncidenciaController(IncidenciaRepositorio repositorio, IncidenciaAssembler assembler,
-				IncidenciaListaAssembler listaAssembler) {
+				IncidenciaListaAssembler listaAssembler, ValoracionListaAssembler valoracionListaAssembler) {
 		
 			this.repositorio = repositorio;
 			this.assembler = assembler;
 			this.listaAssembler = listaAssembler;
+			this.valoracionListaAssembler= valoracionListaAssembler;
 			log = GesinalogAPIApplication.log;
 		}
 
@@ -54,7 +64,16 @@ public class IncidenciaController {
 	public CollectionModel<IncidenciaListaModel> all (){
 		return  listaAssembler.toCollection(repositorio.findAll());
 	}
-	
+	@GetMapping("{id}/valoraciones")
+	public CollectionModel<ValoracionListaModel> valoraciones(@PathVariable Long id) {
+		IncidenciaConId incidencia = repositorio.findById(id)
+				.orElseThrow(() -> new RegisterNotFoundException(id, "incidencia"));
+		
+		Link link = linkTo(methodOn(IncidenciaController.class).one(id)).withSelfRel();
+					link = Link.of(link.getHref() + "/valoraciones", "valoraciones");
+				
+	    return valoracionListaAssembler.toCollection(incidencia.getValoraciones());
+	}
 	
 	@PostMapping
 	public IncidenciaModel add(@RequestBody IncidenciaModel model) {

@@ -2,12 +2,13 @@ package es.mdef.gesinalog_API.entidades;
 
 import java.util.List;
 
+import com.luque.librerias.utilidades.Instalacion;
 import com.luque.librerias.utilidades.InstalacionImpl;
 
 
 
 
-public class InstalacionConId extends InstalacionImpl{
+public class InstalacionConId extends InstalacionImpl implements Instalacion{
 	
 		
 		
