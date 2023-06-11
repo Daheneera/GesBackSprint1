@@ -15,7 +15,7 @@ public class IncidenciaConId extends IncidenciaImpl implements Incidencia{
 	
 	
 	private Long id;
-	
+	private InstalacionConId instalacion;
 	private List<Valoracion> valoraciones;
 	public Long getId() {
 		return id;
@@ -23,7 +23,12 @@ public class IncidenciaConId extends IncidenciaImpl implements Incidencia{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+	public InstalacionConId getInstalacion() {
+		return instalacion;
+	}
+	public void setInstalacion(InstalacionConId instalacion) {
+		this.instalacion = instalacion;
+	}
 	public List<Valoracion> getValoraciones() {
 		return valoraciones;
 	}
@@ -32,11 +37,12 @@ public class IncidenciaConId extends IncidenciaImpl implements Incidencia{
 	}
 	@Override
 	public String toString() {
-		return "IncidenciaConId [id=" + id + ", valoraciones=" + valoraciones + ", getDescripcion()=" + getDescripcion()
-				+ ", getEstadoIncidencia()=" + getEstadoIncidencia() + ", getFechaAlta()=" + getFechaAlta()
-				+ ", getFechaInicio()=" + getFechaInicio() + ", getInstalacion()=" + getInstalacion()
+		return "IncidenciaConId [id=" + id + ", instalacion=" + instalacion + ", valoraciones=" + valoraciones
+				+ ", getDescripcion()=" + getDescripcion() + ", getEstadoIncidencia()=" + getEstadoIncidencia()
+				+ ", getFechaAlta()=" + getFechaAlta() + ", getFechaInicio()=" + getFechaInicio()
 				+ ", getTipoIncidencia()=" + getTipoIncidencia() + ", getUrgencia()=" + getUrgencia() + "]";
 	}
+	
 	
 	
 

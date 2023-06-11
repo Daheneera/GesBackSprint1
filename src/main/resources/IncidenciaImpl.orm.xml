@@ -22,9 +22,7 @@
 				 	<enumerated>ORDINAL</enumerated>
 			 </basic>
 			
-				<many-to-one name="instalacion" fetch="LAZY" optional="false" target-entity="es.mdef.gesinalog_API.entidades.InstalacionConId">
-				<join-column name="instalacionId"/>
-			</many-to-one>
+				
         </attributes>
     </mapped-superclass>
 </entity-mappings>
