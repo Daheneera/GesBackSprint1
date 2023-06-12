@@ -1,5 +1,9 @@
 package es.mdef.gesinalog_API.REST.valoracion;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.luque.librerias.utilidades.IncidenciaImpl.Tipo;
+
 import es.mdef.gesinalog_API.GesinalogAPIApplication;
 import es.mdef.gesinalog_API.Excepciones.RegisterNotFoundException;
 import es.mdef.gesinalog_API.REST.incidencia.IncidenciaAssembler;
 import es.mdef.gesinalog_API.entidades.Valoracion;
+import es.mdef.gesinalog_API.repositorios.IncidenciaRepositorio;
 import es.mdef.gesinalog_API.repositorios.ValoracionRepositorio;
 
 
@@ -24,6 +31,7 @@ import es.mdef.gesinalog_API.repositorios.ValoracionRepositorio;
 public class ValoracionController {
 
 	private final ValoracionRepositorio repositorio;
+	private final IncidenciaRepositorio incidenciaRepositorio;
 	private final ValoracionAssembler assembler;
 	private final ValoracionListaAssembler listaAssembler;
 	private final IncidenciaAssembler incidenciaAssembler;
@@ -33,9 +41,10 @@ public class ValoracionController {
 	
 	
 	
-	public ValoracionController(ValoracionRepositorio repositorio, ValoracionAssembler assembler,
+	public ValoracionController(ValoracionRepositorio repositorio,IncidenciaRepositorio incidenciaRepositorio, ValoracionAssembler assembler,
 			ValoracionListaAssembler listaAssembler, IncidenciaAssembler incidenciaAssembler) {
 		this.repositorio = repositorio;
+		this.incidenciaRepositorio = incidenciaRepositorio;
 		this.assembler = assembler;
 		this.listaAssembler = listaAssembler;
 		this.incidenciaAssembler = incidenciaAssembler;
@@ -55,6 +64,33 @@ public class ValoracionController {
 	public CollectionModel<ValoracionListaModel> all() {
 		return listaAssembler.toCollection(repositorio.findAll());
 	}
+	
+	
+	    
+	@GetMapping("/agrupadas-por-tipo-incidencia")
+	public List<SumaValoracionesModel> obtenerValoracionesAgrupadasPorTipoIncidencia() {
+	    List<Object[]> valoraciones = incidenciaRepositorio.getValoracionesAgrupadasPorTipoIncidencia();
+	    List<SumaValoracionesModel> sumaValoraciones = new ArrayList<>();
+
+	    for (Object[] resultado : valoraciones) {
+	        Tipo tipoIncidencia = (Tipo) resultado[0];
+	        Long numeroValoraciones = (Long) resultado[1];
+	        Long sumaPuntuaciones = (Long) resultado[2];
+
+	        SumaValoracionesModel sumaValoracionesModel = new SumaValoracionesModel();
+	        sumaValoracionesModel.setTipoIncidencia(tipoIncidencia);
+	        sumaValoracionesModel.setSumaPuntuaciones(sumaPuntuaciones);
+	        sumaValoracionesModel.setNumeroValoraciones(numeroValoraciones);
+
+	       
+
+	        sumaValoraciones.add(sumaValoracionesModel);
+	    }
+
+	    return sumaValoraciones;
+	 
+	}
+	
 	
 	@PostMapping
 	public ValoracionModel add(@RequestBody ValoracionModel model) {

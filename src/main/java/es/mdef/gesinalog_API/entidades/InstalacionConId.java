@@ -27,10 +27,9 @@ public class InstalacionConId extends InstalacionImpl implements Instalacion{
 		}
 		@Override
 		public String toString() {
-			return "Instalacion [getId()=" + getId() + ", getNombre()=" + getNombre() + ", getA_c()=" + getA_c()
-					+ ", getIncidencias()=" + getIncidencias() + ", getTipoInstalación()=" + getTipoInstalación()
-					+ ", getMobiliario()=" + getMobiliario() + "]";
+			return "InstalacionConId [id=" + id + "]";
 		}
+		
 		
 		
 		

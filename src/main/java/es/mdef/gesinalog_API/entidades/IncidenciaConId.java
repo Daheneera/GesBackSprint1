@@ -32,11 +32,9 @@ public class IncidenciaConId extends IncidenciaImpl implements Incidencia{
 	}
 	@Override
 	public String toString() {
-		return "IncidenciaConId [id=" + id + ", valoraciones=" + valoraciones + ", getDescripcion()=" + getDescripcion()
-				+ ", getEstadoIncidencia()=" + getEstadoIncidencia() + ", getFechaAlta()=" + getFechaAlta()
-				+ ", getFechaInicio()=" + getFechaInicio() + ", getInstalacion()=" + getInstalacion()
-				+ ", getTipoIncidencia()=" + getTipoIncidencia() + ", getUrgencia()=" + getUrgencia() + "]";
+		return "IncidenciaConId [id=" + id + ", valoraciones=" + valoraciones + "]";
 	}
+	
 
 	
 	

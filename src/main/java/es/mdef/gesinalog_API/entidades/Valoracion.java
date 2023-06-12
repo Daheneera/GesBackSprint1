@@ -48,11 +48,13 @@ public class Valoracion {
 		public void setUsuario(Usuario usuario) {
 			this.usuario = usuario;
 		}
+
 		@Override
 		public String toString() {
-			return "Valoracion [id=" + id + ", puntuacion=" + puntuacion + ", incidencia=" + incidencia + ", usuario="
+			return "Valoracion [id=" + id + ", puntuacion=" + puntuacion + ", incidencia=" + ", usuario="
 					+ usuario + "]";
 		}
+		
 		
 		
 		

@@ -3,6 +3,8 @@ package es.mdef.gesinalog_API.REST.incidencia;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;
@@ -74,6 +76,9 @@ public class IncidenciaController {
 				
 	    return valoracionListaAssembler.toCollection(incidencia.getValoraciones());
 	}
+	
+	
+	
 	
 	@PostMapping
 	public IncidenciaModel add(@RequestBody IncidenciaModel model) {
