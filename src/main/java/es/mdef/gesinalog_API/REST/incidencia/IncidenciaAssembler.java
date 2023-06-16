@@ -5,6 +5,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
+import com.luque.librerias.utilidades.Incidencia;
+
 import es.mdef.gesinalog_API.REST.instalacion.InstalacionController;
 import es.mdef.gesinalog_API.entidades.IncidenciaConId;
 import es.mdef.gesinalog_API.entidades.InstalacionConId;
@@ -12,10 +14,10 @@ import es.mdef.gesinalog_API.entidades.InstalacionConId;
 
 
 @Component
-public class IncidenciaAssembler implements RepresentationModelAssembler<IncidenciaConId, IncidenciaModel> {
+public class IncidenciaAssembler<T extends Incidencia> implements RepresentationModelAssembler<T, IncidenciaModel> {
 
 	@Override
-	public IncidenciaModel toModel(IncidenciaConId entity) {
+	public IncidenciaModel toModel(T entity) {
 		IncidenciaModel model = new IncidenciaModel();
 		model.setDescripcion(entity.getDescripcion());
 		model.setEstadoIncidencia(entity.getEstadoIncidencia());
@@ -24,7 +26,7 @@ public class IncidenciaAssembler implements RepresentationModelAssembler<Inciden
 		model.setTipoIncidencia(entity.getTipoIncidencia());
 		model.setUrgencia(entity.getUrgencia());
 		model.add(
-				linkTo(methodOn(IncidenciaController.class).one(entity.getId())).withSelfRel(),
+				linkTo(methodOn(IncidenciaController.class).one(((IncidenciaConId) entity).getId())).withSelfRel(),
 				linkTo(methodOn(InstalacionController.class).one(((InstalacionConId)entity.getInstalacion()).getId())).withRel("Instalacion")
 			
 				);

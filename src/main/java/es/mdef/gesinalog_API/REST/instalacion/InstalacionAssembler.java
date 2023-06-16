@@ -2,6 +2,8 @@ package es.mdef.gesinalog_API.REST.instalacion;
 
 import org.springframework.stereotype.Component;
 
+import com.luque.librerias.utilidades.Instalacion;
+
 import es.mdef.gesinalog_API.entidades.Habitacion;
 import es.mdef.gesinalog_API.entidades.InstalacionConId;
 import es.mdef.gesinalog_API.entidades.ZonaGeneral;
@@ -12,49 +14,23 @@ import org.springframework.hateoas.server.RepresentationModelAssembler;
 
 
 @Component
-public class InstalacionAssembler implements RepresentationModelAssembler<InstalacionConId, InstalacionModel> {
+public class InstalacionAssembler<T extends Instalacion> implements RepresentationModelAssembler<T, InstalacionModel> {
 
 	@Override
-	public InstalacionModel toModel(InstalacionConId entity) {
+	public InstalacionModel toModel(T entity) {
 		InstalacionModel model = new InstalacionModel();
 		model.setA_c(entity.getA_c());
 		model.setNombre(entity.getNombre());
 		model.setTipoInstalacion(entity.getTipoInstalación());
 		model.setMobiliario(entity.getMobiliario());
 		model.add(
-				linkTo(methodOn(InstalacionController.class).one(entity.getId())).withSelfRel()
+				linkTo(methodOn(InstalacionController.class).one(((InstalacionConId) entity).getId())).withSelfRel()
 				);
 		return model;
 	}
-	public InstalacionModel toModel(Habitacion entity) {
-		InstalacionModel model = new InstalacionModel();
-		model.setA_c(entity.getA_c());
-		model.setNombre(entity.getNombre());
-		model.setMobiliario(entity.getMobiliario());
-		model.setTipoInstalacion(entity.getTipoInstalación());
-		model.setTelefono(entity.getTelefono());
-		model.setTv(entity.getTv());
-		model.setNumCamas(entity.getNumCamas());
-		model.add(
-				linkTo(methodOn(InstalacionController.class).one(entity.getId())).withSelfRel()
-				);
-		return model;
-	}
+
 	
-	public InstalacionModel toModel(ZonaGeneral entity) {
-		InstalacionModel model = new InstalacionModel();
-		model.setA_c(entity.getA_c());
-		model.setNombre(entity.getNombre());
-		model.setMobiliario(entity.getMobiliario());
-		model.setTipoInstalacion(entity.getTipoInstalación());
-		model.setAforo(entity.getAforo());
-		model.add(
-				linkTo(methodOn(InstalacionController.class).one(entity.getId())).withSelfRel()
-				);
-		return model;
-	}
-	
-	public InstalacionConId toEntity(InstalacionModel model) {
+	public T toEntity(InstalacionModel model) {
 		InstalacionConId instalacion;
 		
 		switch(model.getTipoInstalacion()) {
@@ -77,7 +53,7 @@ public class InstalacionAssembler implements RepresentationModelAssembler<Instal
 		instalacion.setA_c(model.getA_c());
 		instalacion.setMobiliario(model.getMobiliario());
 		instalacion.setTipoInstalación(model.getTipoInstalacion());
-		return instalacion;
+		return (T) instalacion;
 	}
 	
 }

@@ -11,6 +11,8 @@ public class SumaValoracionesModel extends RepresentationModel<SumaValoracionesM
 		private Tipo tipoIncidencia;
 		private Long numeroValoraciones;
 		private Long sumaPuntuaciones;
+		private Double promedioPuntuaciones;
+		
 		public Tipo getTipoIncidencia() {
 			return tipoIncidencia;
 		}
@@ -29,11 +31,21 @@ public class SumaValoracionesModel extends RepresentationModel<SumaValoracionesM
 		public void setSumaPuntuaciones(Long sumaPuntuaciones) {
 			this.sumaPuntuaciones = sumaPuntuaciones;
 		}
+		
+		public Double getPromedioPuntuaciones() {
+			return promedioPuntuaciones;
+		}
+		public void setPromedioPuntuaciones(Double promedioPuntuaciones) {
+			this.promedioPuntuaciones = promedioPuntuaciones;
+		}
 		@Override
 		public String toString() {
 			return "SumaValoracionesModel [tipoIncidencia=" + tipoIncidencia + ", numeroValoraciones="
-					+ numeroValoraciones + ", sumaPuntuaciones=" + sumaPuntuaciones + "]";
+					+ numeroValoraciones + ", sumaPuntuaciones=" + sumaPuntuaciones + ", promedioPuntuaciones="
+					+ promedioPuntuaciones + "]";
 		}
+		
+
 	
 	
 	

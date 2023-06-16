@@ -68,19 +68,25 @@ public class ValoracionController {
 	
 	    
 	@GetMapping("/agrupadas-por-tipo-incidencia")
-	public List<SumaValoracionesModel> obtenerValoracionesAgrupadasPorTipoIncidencia() {
+	public List<Object> obtenerValoracionesAgrupadasPorTipoIncidencia() {
 	    List<Object[]> valoraciones = incidenciaRepositorio.getValoracionesAgrupadasPorTipoIncidencia();
-	    List<SumaValoracionesModel> sumaValoraciones = new ArrayList<>();
+	    List<Object> sumaValoraciones = new ArrayList<>();
 
 	    for (Object[] resultado : valoraciones) {
-	        Tipo tipoIncidencia = (Tipo) resultado[0];
-	        Long numeroValoraciones = (Long) resultado[1];
+	    	
+	      	Byte tipoIncidenciaByte = (Byte) resultado[0];
+	       	int ordinalTipo = tipoIncidenciaByte.intValue();
+	       	
+			Tipo tipoIncidencia = Tipo.values()[ordinalTipo];
+	        Long numeroValoraciones =  (Long) resultado[1];
 	        Long sumaPuntuaciones = (Long) resultado[2];
+	        Double promedioPuntuaciones = (Double) resultado[3];
 
 	        SumaValoracionesModel sumaValoracionesModel = new SumaValoracionesModel();
 	        sumaValoracionesModel.setTipoIncidencia(tipoIncidencia);
 	        sumaValoracionesModel.setSumaPuntuaciones(sumaPuntuaciones);
 	        sumaValoracionesModel.setNumeroValoraciones(numeroValoraciones);
+	        sumaValoracionesModel.setPromedioPuntuaciones(promedioPuntuaciones);
 
 	       
 

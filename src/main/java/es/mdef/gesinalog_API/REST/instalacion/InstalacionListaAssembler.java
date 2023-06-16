@@ -4,6 +4,8 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
+import com.luque.librerias.utilidades.Instalacion;
+
 import es.mdef.gesinalog_API.entidades.Habitacion;
 import es.mdef.gesinalog_API.entidades.InstalacionConId;
 import es.mdef.gesinalog_API.entidades.ZonaGeneral;
@@ -16,11 +18,11 @@ import java.util.stream.Collectors;
 
 
 @Component
-public class InstalacionListaAssembler implements RepresentationModelAssembler<InstalacionConId, InstalacionListaModel> {
+public class InstalacionListaAssembler<T extends Instalacion> implements RepresentationModelAssembler<T, InstalacionListaModel> {
 
 	
 	@Override
-	public InstalacionListaModel toModel(InstalacionConId entity) {
+	public InstalacionListaModel toModel(T entity) {
 		InstalacionListaModel model = new InstalacionListaModel();
 		model.setNombre(entity.getNombre());
 		model.setA_c(entity.getA_c());
@@ -38,13 +40,13 @@ public class InstalacionListaAssembler implements RepresentationModelAssembler<I
 		}
 				
 		model.add(
-				linkTo(methodOn(InstalacionController.class).one(entity.getId())).withSelfRel()
+				linkTo(methodOn(InstalacionController.class).one(((InstalacionConId) entity).getId())).withSelfRel()
 				
 				);
 		return model;
 	}
 
-	public CollectionModel<InstalacionListaModel> toCollection(List<InstalacionConId> lista){
+	public CollectionModel<InstalacionListaModel> toCollection(List<T> lista){
 		CollectionModel<InstalacionListaModel> collection = CollectionModel.of(
 								  lista.stream().map(this::toModel).collect(Collectors.toList()));
 		collection.add(

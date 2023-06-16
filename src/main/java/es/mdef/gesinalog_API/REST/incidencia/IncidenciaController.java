@@ -3,6 +3,8 @@ package es.mdef.gesinalog_API.REST.incidencia;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.luque.librerias.utilidades.IncidenciaImpl.Estado;
+import com.luque.librerias.utilidades.IncidenciaImpl.Prelacion;
+import com.luque.librerias.utilidades.IncidenciaImpl.Tipo;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import es.mdef.gesinalog_API.GesinalogAPIApplication;
 import es.mdef.gesinalog_API.Excepciones.RegisterNotFoundException;
 import es.mdef.gesinalog_API.REST.instalacion.InstalacionController;
+import es.mdef.gesinalog_API.REST.valoracion.SumaValoracionesModel;
 import es.mdef.gesinalog_API.REST.valoracion.ValoracionListaAssembler;
 import es.mdef.gesinalog_API.REST.valoracion.ValoracionListaModel;
 import es.mdef.gesinalog_API.entidades.IncidenciaConId;
@@ -77,8 +83,51 @@ public class IncidenciaController {
 	    return valoracionListaAssembler.toCollection(incidencia.getValoraciones());
 	}
 	
+	@GetMapping("/agrupadas-por-mes")
+	public List<HistoricoModel>  obtenerIncidenciasPorTipoIncidenciaYMes() {
+	    List<Object[]> IncidenciasPorTipoYMes = repositorio.getIncidenciasPorTipoIncidenciaYMes();
+	    List<HistoricoModel> historico = new ArrayList<>();
+	    
+	    for (Object[] resultado : IncidenciasPorTipoYMes) {
+	       	String descripcion= (String) resultado[0];
+	       	java.sql.Date fechaAltaSql = (java.sql.Date) resultado[1];
+	       	java.time.LocalDate fechaAlta = fechaAltaSql.toLocalDate();
+	    	java.sql.Date fechaInicioSql = (java.sql.Date) resultado[2];
+	       	java.time.LocalDate fechaInicio = fechaInicioSql.toLocalDate();
+	       	Byte tipoIncidenciaByte = (Byte) resultado[3];
+	       	int ordinalTipo = tipoIncidenciaByte.intValue();
+	       	
+			Tipo tipoIncidencia = Tipo.values()[ordinalTipo];
+	       	Byte prelacionByte = (Byte) resultado[4];
+	       	int ordinalPrelacion = prelacionByte.intValue();
+			Prelacion urgencia = Prelacion.values()[ordinalPrelacion];
+			
+			Long instalacion = (Long) resultado[5];
+			Long cantidadValoraciones = (Long) resultado[6];
+			Double promedioPuntuacion = (Double) resultado[7];
+			String mes = (String) resultado[8];
+			String anno =  resultado[9].toString();
+			
+			HistoricoModel model = new HistoricoModel();
+			model.setDescripcion(descripcion);
+			model.setFechaAlta(fechaAlta);
+			model.setFechaInicio(fechaInicio);
+			model.setTipoIncidencia(tipoIncidencia);
+			model.setUrgencia(urgencia);
+			model.setCantidadValoraciones(cantidadValoraciones);
+			model.setPromedioPuntuacion(promedioPuntuacion);
+			model.setMes(mes);
+			model.setAnno(anno);
+			model.add(
+					linkTo(methodOn(InstalacionController.class).one(instalacion)).withRel("instalacion"));
+					
+			
+			historico.add(model);
 	
-	
+	    }
+
+	    return historico;
+	}
 	
 	@PostMapping
 	public IncidenciaModel add(@RequestBody IncidenciaModel model) {
