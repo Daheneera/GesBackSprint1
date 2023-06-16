@@ -11,7 +11,8 @@ import es.mdef.gesinalog_API.entidades.Usuario;
 public class ValoracionModel extends RepresentationModel<ValoracionModel> {
 	private Integer puntuacion;
 	private IncidenciaConId incidencia;
-	private Usuario usuario;
+	private Usuario user;
+	private String opinion;
 	
 	public Integer getPuntuacion() {
 		return puntuacion;
@@ -26,16 +27,24 @@ public class ValoracionModel extends RepresentationModel<ValoracionModel> {
 		this.incidencia = incidencia;
 	}
 	public Usuario getUsuario() {
-		return usuario;
+		return user;
 	}
 	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+		this.user = usuario;
+	}
+	
+	public String getOpinion() {
+		return opinion;
+	}
+	public void setOpinion(String opinion) {
+		this.opinion = opinion;
 	}
 	@Override
 	public String toString() {
-		return "ValoracionModel [puntuacion=" + puntuacion + ", incidencia=" + incidencia + ", usuario=" + usuario
-				+ "]";
+		return "ValoracionModel [puntuacion=" + puntuacion + ", incidencia=" + incidencia + ", usuario=" + user
+				+ ", opinion=" + opinion + "]";
 	}
+	
 	
 	
 	

@@ -24,7 +24,7 @@ public class Usuario {
 		private String username;
 		private String password;
 		private Role tipoUser;
-		@OneToMany(mappedBy = "usuario")
+		@OneToMany(mappedBy = "user")
 		private List<Valoracion> valoraciones;
 		public Long getId() {
 			return id;

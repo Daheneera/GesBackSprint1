@@ -110,6 +110,7 @@ public class ValoracionController {
 		Valoracion valoracion = repositorio.findById(id).map(val->{
 			val.setIncidencia(model.getIncidencia());
 			val.setPuntuacion(model.getPuntuacion());
+			val.setOpinion(model.getOpinion());
 			val.setUsuario(model.getUsuario());
 			return repositorio.save(val);
 		}).orElseThrow(()->new RegisterNotFoundException(id, "valoracion"));

@@ -18,6 +18,7 @@ public class ValoracionAssembler implements RepresentationModelAssembler<Valorac
 	public ValoracionModel toModel(Valoracion entity) {
 		ValoracionModel model= new ValoracionModel();
 		model.setPuntuacion(entity.getPuntuacion());
+		model.setOpinion(entity.getOpinion());
 		model.add(
 				linkTo(methodOn(ValoracionController.class).one(entity.getId())).withSelfRel(),
 				linkTo(methodOn(IncidenciaController.class).one(entity.getIncidencia().getId())).withRel("incidencia"),
@@ -33,6 +34,7 @@ public class ValoracionAssembler implements RepresentationModelAssembler<Valorac
 	public Valoracion toEntity(ValoracionModel model) {
 		Valoracion valoracion = new Valoracion();
 		valoracion.setPuntuacion(model.getPuntuacion());
+		valoracion.setOpinion(model.getOpinion());
 		valoracion.setIncidencia(model.getIncidencia());
 		valoracion.setUsuario(model.getUsuario());
 		return valoracion;

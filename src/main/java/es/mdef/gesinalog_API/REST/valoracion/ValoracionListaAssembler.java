@@ -21,6 +21,7 @@ public class ValoracionListaAssembler implements RepresentationModelAssembler<Va
 	public ValoracionListaModel toModel(Valoracion entity) {
 		ValoracionListaModel model = new ValoracionListaModel();
 		model.setPuntuacion(entity.getPuntuacion());
+		model.setOpinion(entity.getOpinion());
 		model.add(
 				linkTo(methodOn(ValoracionController.class).one(entity.getId())).withSelfRel(),
 				linkTo(methodOn(IncidenciaController.class).one(entity.getIncidencia().getId())).withRel("incidencia"),

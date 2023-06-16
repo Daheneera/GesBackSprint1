@@ -74,9 +74,7 @@ public class InstalacionController {
 	public CollectionModel<IncidenciaListaModel> incidencias(@PathVariable Long id) {
 		InstalacionConId instalacion = repositorio.findById(id)
 				.orElseThrow(() -> new RegisterNotFoundException(id, "instalacion"));
-		
-		Link link = linkTo(methodOn(InstalacionController.class).one(id)).withSelfRel();
-					link = Link.of(link.getHref() + "/incidencias", "incidencias");
+	
 				
 	    return incidenciaListaAssembler.toCollection(instalacion.getIncidencias());
 	}

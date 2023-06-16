@@ -10,7 +10,7 @@ import es.mdef.gesinalog_API.entidades.Usuario;
 public class ValoracionListaModel extends RepresentationModel<ValoracionListaModel> {
 	
 	private Integer puntuacion;
-
+	private String opinion;
 	
 	public Integer getPuntuacion() {
 		return puntuacion;
@@ -18,11 +18,18 @@ public class ValoracionListaModel extends RepresentationModel<ValoracionListaMod
 	public void setPuntuacion(Integer puntuacion) {
 		this.puntuacion = puntuacion;
 	}
+	
+	public String getOpinion() {
+		return opinion;
+	}
+	public void setOpinion(String opinion) {
+		this.opinion = opinion;
+	}
 	@Override
 	public String toString() {
-		return "ValoracionListaModel [puntuacion=" + puntuacion + "]";
+		return "ValoracionListaModel [puntuacion=" + puntuacion + ", opinion=" + opinion + "]";
 	}
-
+	
 	
 	
 }

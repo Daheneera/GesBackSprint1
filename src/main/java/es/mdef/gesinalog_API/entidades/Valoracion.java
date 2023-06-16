@@ -22,7 +22,8 @@ public class Valoracion {
 		private IncidenciaConId incidencia;
 		@ManyToOne(fetch=FetchType.LAZY)
 		@JoinColumn(name="UsuarioId")
-		private Usuario usuario;
+		private Usuario user;
+		private String opinion;
 		public Long getId() {
 			return id;
 		}
@@ -43,17 +44,26 @@ public class Valoracion {
 			this.incidencia = incidencia;
 		}
 		public Usuario getUsuario() {
-			return usuario;
+			return user;
 		}
 		public void setUsuario(Usuario usuario) {
-			this.usuario = usuario;
+			this.user = usuario;
+		}
+		public String getOpinion() {
+			return opinion;
+		}
+
+		public void setOpinion(String opinion) {
+			this.opinion = opinion;
 		}
 
 		@Override
 		public String toString() {
-			return "Valoracion [id=" + id + ", puntuacion=" + puntuacion + ", incidencia=" + ", usuario="
-					+ usuario + "]";
+			return "Valoracion [id=" + id + ", puntuacion=" + puntuacion + ", incidencia=" + incidencia.getId() + ", usuario="
+					+ user.getNombre() + ", opinion=" + opinion + "]";
 		}
+
+		
 		
 		
 		
