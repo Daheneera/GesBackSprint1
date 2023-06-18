@@ -4,11 +4,9 @@ import java.time.LocalDate;
 
 import org.springframework.hateoas.RepresentationModel;
 
-import com.luque.librerias.utilidades.IncidenciaImpl.Estado;
 import com.luque.librerias.utilidades.IncidenciaImpl.Prelacion;
 import com.luque.librerias.utilidades.IncidenciaImpl.Tipo;
 
-import es.mdef.gesinalog_API.entidades.InstalacionConId;
 
 public class HistoricoModel extends RepresentationModel<HistoricoModel> {
 

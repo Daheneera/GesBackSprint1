@@ -1,6 +1,5 @@
 package es.mdef.gesinalog_API.entidades;
 
-import java.util.List;
 
 import com.luque.librerias.utilidades.conHuesped;
 

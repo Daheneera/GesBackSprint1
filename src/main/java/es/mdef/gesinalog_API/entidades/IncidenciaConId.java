@@ -1,12 +1,10 @@
 package es.mdef.gesinalog_API.entidades;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import com.luque.librerias.utilidades.Incidencia;
 import com.luque.librerias.utilidades.IncidenciaImpl;
 
-import jakarta.persistence.OneToMany;
 
 
 

@@ -3,14 +3,12 @@ package es.mdef.gesinalog_API.REST.incidencia;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.Link;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,21 +18,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.luque.librerias.utilidades.IncidenciaImpl.Estado;
+
 import com.luque.librerias.utilidades.IncidenciaImpl.Prelacion;
 import com.luque.librerias.utilidades.IncidenciaImpl.Tipo;
 
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import es.mdef.gesinalog_API.GesinalogAPIApplication;
 import es.mdef.gesinalog_API.Excepciones.RegisterNotFoundException;
 import es.mdef.gesinalog_API.REST.instalacion.InstalacionController;
-import es.mdef.gesinalog_API.REST.valoracion.SumaValoracionesModel;
 import es.mdef.gesinalog_API.REST.valoracion.ValoracionListaAssembler;
 import es.mdef.gesinalog_API.REST.valoracion.ValoracionListaModel;
 import es.mdef.gesinalog_API.entidades.IncidenciaConId;
-import es.mdef.gesinalog_API.entidades.InstalacionConId;
 import es.mdef.gesinalog_API.entidades.Valoracion;
 import es.mdef.gesinalog_API.repositorios.IncidenciaRepositorio;
 
