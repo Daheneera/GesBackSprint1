@@ -1,5 +1,6 @@
 package es.mdef.gesinalog_API.REST.valoracion;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -74,10 +75,9 @@ public class ValoracionController {
 
 	    for (Object[] resultado : valoraciones) {
 	    	
-	    	Short tipoIncidenciaByte = (Short) resultado[0];
-	       	int ordinalTipo = tipoIncidenciaByte.intValue();
-	       	
-			Tipo tipoIncidencia = Tipo.values()[ordinalTipo];
+	    	BigDecimal valorBigDecimal = (BigDecimal) resultado[0];
+	    	int ordinalTipo = valorBigDecimal.intValue();
+	    	Tipo tipoIncidencia = Tipo.values()[ordinalTipo];
 	        Long numeroValoraciones =  (Long) resultado[1];
 	        Long sumaPuntuaciones = (Long) resultado[2];
 	        Double promedioPuntuaciones = (Double) resultado[3];
@@ -87,8 +87,6 @@ public class ValoracionController {
 	        sumaValoracionesModel.setSumaPuntuaciones(sumaPuntuaciones);
 	        sumaValoracionesModel.setNumeroValoraciones(numeroValoraciones);
 	        sumaValoracionesModel.setPromedioPuntuaciones(promedioPuntuaciones);
-
-	       
 
 	        sumaValoraciones.add(sumaValoracionesModel);
 	    }
