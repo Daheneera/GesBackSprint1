@@ -74,7 +74,7 @@ public class ValoracionController {
 
 	    for (Object[] resultado : valoraciones) {
 	    	
-	      	Byte tipoIncidenciaByte = (Byte) resultado[0];
+	    	Short tipoIncidenciaByte = (Short) resultado[0];
 	       	int ordinalTipo = tipoIncidenciaByte.intValue();
 	       	
 			Tipo tipoIncidencia = Tipo.values()[ordinalTipo];
