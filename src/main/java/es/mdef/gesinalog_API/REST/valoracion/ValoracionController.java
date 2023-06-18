@@ -25,7 +25,7 @@ import es.mdef.gesinalog_API.entidades.Valoracion;
 import es.mdef.gesinalog_API.repositorios.IncidenciaRepositorio;
 import es.mdef.gesinalog_API.repositorios.ValoracionRepositorio;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/valoraciones")
 public class ValoracionController {
