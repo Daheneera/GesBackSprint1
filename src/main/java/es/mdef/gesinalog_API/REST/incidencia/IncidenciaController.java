@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,7 +33,7 @@ import es.mdef.gesinalog_API.entidades.IncidenciaConId;
 import es.mdef.gesinalog_API.entidades.Valoracion;
 import es.mdef.gesinalog_API.repositorios.IncidenciaRepositorio;
 
-//@CrossOrigin(origins = "http://localhost:5173", methods= {RequestMethod.PUT, RequestMethod.POST, RequestMethod.GET})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/incidencias")
 public class IncidenciaController {

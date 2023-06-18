@@ -34,7 +34,7 @@ import es.mdef.gesinalog_API.entidades.ZonaGeneral;
 import es.mdef.gesinalog_API.repositorios.InstalacionRepositorio;
 
 
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/instalaciones")
 public class InstalacionController {
