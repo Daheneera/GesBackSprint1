@@ -3,7 +3,7 @@ package es.mdef.gesinalog_API.REST.incidencia;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.luque.librerias.utilidades.IncidenciaImpl.Prelacion;
 import com.luque.librerias.utilidades.IncidenciaImpl.Tipo;
-
 
 import es.mdef.gesinalog_API.GesinalogAPIApplication;
 import es.mdef.gesinalog_API.Excepciones.RegisterNotFoundException;
@@ -71,11 +69,10 @@ public class IncidenciaController {
 	public CollectionModel<ValoracionListaModel> valoraciones(@PathVariable Long id) {
 		IncidenciaConId incidencia = repositorio.findById(id)
 				.orElseThrow(() -> new RegisterNotFoundException(id, "incidencia"));
-		for (Valoracion valor :incidencia.getValoraciones()) {
+		for (Valoracion valor : incidencia.getValoraciones()) {
 			log.info(valor.toString());
-		}	
-		
-	
+		}
+
 		return valoracionListaAssembler.toCollection(incidencia.getValoraciones());
 	}
 
@@ -90,18 +87,21 @@ public class IncidenciaController {
 			java.time.LocalDate fechaAlta = fechaAltaSql.toLocalDate();
 			java.sql.Date fechaInicioSql = (java.sql.Date) resultado[2];
 			java.time.LocalDate fechaInicio = fechaInicioSql.toLocalDate();
-			
+
 			Object valorRecibidoIndex3 = resultado[3];
-	    	int ordinalTipo = ((Short) valorRecibidoIndex3).intValue();
+			int ordinalTipo = ((Short) valorRecibidoIndex3).intValue();
 			Tipo tipoIncidencia = Tipo.values()[ordinalTipo];
-			
+
 			Object valorRecibidoIndex4 = resultado[4];
-			int ordinalPrelacion = ((Short)valorRecibidoIndex4).intValue();
+			int ordinalPrelacion = ((Short) valorRecibidoIndex4).intValue();
 			Prelacion urgencia = Prelacion.values()[ordinalPrelacion];
 
 			Long instalacion = (Long) resultado[5];
 			Long cantidadValoraciones = (Long) resultado[6];
-			Double promedioPuntuacion = (Double) resultado[7];
+
+			BigDecimal valorRecibidoIndex7 = (BigDecimal) resultado[7];
+			Double promedioPuntuacion = valorRecibidoIndex7.doubleValue();
+
 			String mes = (String) resultado[8];
 			String anno = resultado[9].toString();
 
