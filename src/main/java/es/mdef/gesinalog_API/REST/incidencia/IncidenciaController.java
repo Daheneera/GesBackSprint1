@@ -90,8 +90,8 @@ public class IncidenciaController {
 			java.time.LocalDate fechaAlta = fechaAltaSql.toLocalDate();
 			java.sql.Date fechaInicioSql = (java.sql.Date) resultado[2];
 			java.time.LocalDate fechaInicio = fechaInicioSql.toLocalDate();
-			Byte tipoIncidenciaByte = (Byte) resultado[3];
-			int ordinalTipo = tipoIncidenciaByte.intValue();
+			Object valorRecibido = resultado[3];
+	    	int ordinalTipo = (int) valorRecibido;
 
 			Tipo tipoIncidencia = Tipo.values()[ordinalTipo];
 			Byte prelacionByte = (Byte) resultado[4];
