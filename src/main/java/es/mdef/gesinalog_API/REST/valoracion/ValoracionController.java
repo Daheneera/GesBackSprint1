@@ -76,7 +76,7 @@ public class ValoracionController {
 	    for (Object[] resultado : valoraciones) {
 	    	
 	    	Object valorRecibido = resultado[0];
-	    	int ordinalTipo = (int) valorRecibido;
+	    	int ordinalTipo = ((Short) valorRecibido).intValue();
 	    	Tipo tipoIncidencia = Tipo.values()[ordinalTipo];
 	        Long numeroValoraciones =  (Long) resultado[1];
 	        Long sumaPuntuaciones = (Long) resultado[2];
