@@ -22,7 +22,7 @@ public interface IncidenciaRepositorio extends JpaRepository<IncidenciaConId, Lo
 			+ "WHERE i.estado_Incidencia = 2 "
 			+ "GROUP BY i.descripcion, i.estado_Incidencia, i.fecha_Alta, i.fecha_Inicio, i.tipo_Incidencia, "
 			+ "i.urgencia, i.instalacion_Id, EXTRACT(MONTH FROM i.fecha_Alta) "
-			+ "ORDER BY  YEAR(i.fecha_Inicio) DESC, MONTH(i.fecha_Inicio) DESC", nativeQuery = true)
+			+ "ORDER BY EXTRACT(YEAR FROM i.fecha_Inicio) DESC, EXTRACT(MONTH FROM i.fecha_Inicio) DESC", nativeQuery = true)
 	List<Object[]> getIncidenciasPorTipoIncidenciaYMes();
 
 }
