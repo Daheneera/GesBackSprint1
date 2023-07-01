@@ -99,9 +99,11 @@ public class IncidenciaController {
 			Long instalacion = (Long) resultado[5];
 			Long cantidadValoraciones = (Long) resultado[6];
 
+			Double	promedioPuntuacion= 0.0;
 			BigDecimal valorRecibidoIndex7 = (BigDecimal) resultado[7];
-			Double promedioPuntuacion = valorRecibidoIndex7.doubleValue();
-
+			if(valorRecibidoIndex7!=null) {
+			promedioPuntuacion = valorRecibidoIndex7.doubleValue();
+			}
 			String mes = (String) resultado[8];
 			String anno = resultado[9].toString();
 
